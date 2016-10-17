@@ -18,18 +18,18 @@ begin
 			case (op3) is
 			
 				when "000000" => ALU_op <= "000000";--add
-				when "000100" => ALU_op <= "000100";--sub
+				when "000100" => ALU_op <= "000001";--sub
 				when "000010" => ALU_op <= "000010";--or
-				when "000001" => ALU_op <= "000001";--and
-				when "000011" => ALU_op <= "000011";--xor
-				when "000110" => ALU_op <= "000110";--nor
-				when "000101" => ALU_op <= "000101";--nand
+				when "000001" => ALU_op <= "000011";--and
+				when "000011" => ALU_op <= "000100";--xor
+				when "000110" => ALU_op <= "000101";--nor
+				when "000101" => ALU_op <= "000110";--nand
 				when "000111" => ALU_op <= "000111";--xnor
-				when others =>  ALU_OP <= "111111";--nop
+				when others =>  ALU_OP <= "001000";--nop
 			
 			end case;
 		
-		else ALU_op <= "111111";
+		else ALU_op <= "001000";
 		
 		end if;
 		

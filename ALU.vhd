@@ -18,18 +18,18 @@ begin
 		case (ALU_OP) is
 			when "000000" => -- add
 				Alu_Result <= crs1 + salida_MUX;
-			when "000001" => -- and
-				Alu_Result <= crs1 and salida_MUX;
+			when "000001" => -- sub
+				Alu_Result <= crs1 - salida_MUX;
 			when "000010" => --or
 				Alu_Result <= crs1 or salida_MUX;
-			when "000011" => --xor
+			when "000011" => --and
+				Alu_Result <= crs1 and salida_MUX;
+			when "000100" => --xor
 				Alu_Result <= crs1 xor salida_MUX;
-			when "000100" => --sub
-				Alu_Result <= crs1 - salida_MUX;
-			when "000101" => -- nand
-				Alu_Result <= not(crs1 and salida_MUX);
-			when "000110" => --nor
+			when "000101" => -- orn
 				Alu_Result <= not(crs1 or salida_MUX);
+			when "000110" => --andn
+				Alu_Result <= not(crs1 and salida_MUX);
 			when "000111" => --xnor
 				Alu_Result <= crs1 xnor salida_MUX;
 			when others => -- Nop

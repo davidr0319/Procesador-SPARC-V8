@@ -21,17 +21,17 @@ architecture Behavorial of RF is
 	
 begin
 	
-	process(reset, rs1, rs2, rd)
+	process(reset, rs1, rs2, rd, reg, data_to_write)
 	begin
-		if (reset = '0') then
-			crs1 <= reg(conv_integer(rs1 ));
-			crs2 <= reg(conv_integer(rs2 ));
-			reg(conv_integer(rd)) <= data_to_write;
-		else
-			crs1 <= x"00000000";
-			crs2 <= x"00000000";
+		if (reset = '1') then
+			crs1 <= (others => '0');
+			crs2 <= (others => '0');
 			reg <= (others => x"00000000");
+		elsif (rd /= "00000") then
+			reg(conv_integer(rd)) <= data_to_write;
 		end if;
+		crs1 <= reg(conv_integer(rs1));
+		crs2 <= reg(conv_integer(rs2));
 	end process;
 
 end Behavorial;
