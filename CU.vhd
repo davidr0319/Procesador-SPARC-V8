@@ -25,11 +25,26 @@ begin
 				when "000110" => ALU_op <= "000101";--nor
 				when "000101" => ALU_op <= "000110";--nand
 				when "000111" => ALU_op <= "000111";--xnor
-				when others =>  ALU_OP <= "001000";--nop
+				when "010000" => ALU_op <= "001000";--addcc
+				when "010100" => ALU_op <= "001001";--subcc
+				when "001000" => ALU_op <= "001010";--addx
+				when "011000" => ALU_op <= "001011";--addxcc
+				when "001100" => ALU_op <= "001100";--subx
+				when "011100" => ALU_op <= "001101";--subxcc
+				when "010010" => ALU_op <= "001110";--orcc
+				when "010001" => ALU_op <= "001111";--andcc
+				when "010011" => ALU_op <= "010000";--xorcc
+				when "010101" => ALU_op <= "010001";--nandcc
+				when "010110" => ALU_op <= "010010";--norcc
+				when "010111" => ALU_op <= "010011";--xnorcc
+				when "100101" => ALU_op <= "010100";--SLL
+				when "100110" => ALU_op <= "010101";--SRL
+				
+				when others =>  ALU_OP <= "000000";--nop
 			
 			end case;
 		
-		else ALU_op <= "001000";
+		else ALU_op <= "000000";
 		
 		end if;
 		
